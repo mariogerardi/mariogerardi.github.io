@@ -14,6 +14,13 @@ body {
     }
 }
 
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+}
+
 hr {
     color: black;
     background-color: #875fd8;
@@ -48,9 +55,6 @@ section {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 }
 
 .begin {
@@ -131,7 +135,6 @@ section {
     text-align: center;
     border: none;
     border-radius: 2.5px;
-    padding: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -144,7 +147,7 @@ section {
 
 #clue {
     padding: 1vh;
-    font-size: larger;
+    font-size: large;
     font-style: italic;
     margin-top: 15vh;
     border-radius: 10px;
@@ -156,7 +159,7 @@ section {
 
 #exampleclue {
     padding: 1vh;
-    font-size: larger;
+    font-size: large;
     font-style: italic;
     margin-top: 15vh;
     border-radius: 10px;
@@ -166,12 +169,6 @@ section {
 input {
     border: none;
     border-radius: 2.5px;
-}
-
-.decisioncontainer {
-}
-
-#text {
 }
 
 #timer {
