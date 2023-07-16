@@ -178,7 +178,6 @@ function play(i) {
         let downloadTimer = setInterval(function(a) {
             if (timeleft <= 0) {
                 clearInterval(downloadTimer);
-                document.getElementById("time").innerHTML = 15;
                 alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
                 reset();
             } else {
