@@ -219,15 +219,15 @@ function play(i) {
             document.activeElement.innerHTML = ""
             setTimeout(() => {
                 document.activeElement.previousElementSibling.focus();    
-            }, "20");
+            }, "10");
         } else {
             document.activeElement.value = ""; 
             setTimeout(() => { 
                 document.activeElement.innerHTML = event.key;
-            }, "20");
+            }, "10");
             setTimeout(() => {
                 document.activeElement.nextElementSibling.focus();     
-            }, "25");
+            }, "12");
         }
     });
     document.getElementById("a1").focus();
