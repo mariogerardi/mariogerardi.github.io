@@ -19,6 +19,17 @@ input {
     -moz-appearance: none;
     appearance: none;
     padding: 0;
+    border: none;
+    border-radius: 2.5px;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 2.5px;
+    text-align: center;
 }
 
 hr {
@@ -82,7 +93,7 @@ section {
 }
 
 .card {
-    height: 10vh;
+    height: 12vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -154,21 +165,16 @@ section {
 }
 
 #example {
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
 
 #exampleclue {
     padding: 1vh;
     font-size: large;
     font-style: italic;
-    margin-top: 15vh;
+    margin-top: 8vh;
     border-radius: 10px;
     background-image:linear-gradient(gray, gray);
-}
-
-input {
-    border: none;
-    border-radius: 2.5px;
 }
 
 #timer {

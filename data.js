@@ -220,15 +220,15 @@ function play(i) {
             document.activeElement.innerHTML = ""
             setTimeout(() => {
                 document.activeElement.previousElementSibling.focus();    
-            }, "5");
+            }, "20");
         } else {
             document.activeElement.value = ""; 
             setTimeout(() => { 
                 document.activeElement.innerHTML = event.key;
-            }, "5");
+            }, "20");
             setTimeout(() => {
                 document.activeElement.nextElementSibling.focus();     
-            }, "5");
+            }, "25");
         }
     });
     document.getElementById("a1").focus();
