@@ -48,6 +48,9 @@ section {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .begin {
@@ -129,6 +132,9 @@ section {
     border: none;
     border-radius: 2.5px;
     padding: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
   
 
