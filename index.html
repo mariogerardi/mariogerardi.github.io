@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="data.js"></script>
+    <title>Decrypt</title>
+</head>
+<body>
+<div class="container">
+    <section>
+        <div class="inthecard" id="title">
+            <div class="inputbox" id="q"><p>D</p></div>
+            <div class="inputbox" id="q"><p>E</p></div>
+            <div class="inputbox" id="q"><p>C</p></div>
+            <div class="inputbox" id="q"><p>R</p></div>
+            <div class="inputbox" id="q"><p>Y</p></div>
+            <div class="inputbox" id="q"><p>P</p></div>
+            <div class="inputbox" id="q"><p>T</p></div>
+        </div>
+    </section>
+    <hr width="98%">
+    <section>
+        <div class="card">
+            <div class="inthecard">
+                <div class="inputbox" id="q1"><p id="l1"></p></div>
+                <div class="inputbox" id="q2"><p id="l2"></p></div>
+                <div class="inputbox" id="q3"><p id="l3"></p></div>
+                <div class="inputbox" id="q4"><p id="l4"></p></div>
+                <div class="inputbox" id="q5"><p id="l5"></p></div>
+                <div class="inputbox" id="q6"><p id="l6"></p></div>
+                <div class="inputbox" id="q7"><p id="l7"></p></div>
+            </div>
+            <div class="inthecard">
+                <h1 id="clue"></h1>
+            </div>
+        </div>
+        <div class="inthecard">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a1">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a2">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a3">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a4">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a5">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a6">
+            <input style="text-transform:uppercase" maxlength="1" class="inputbox" id="a7">
+        </div>
+        <div class="buttons">
+            <button class="begin" onclick="play(Math.floor(Math.random() * 13))">Begin</button>
+            <div id="timer">Time:<span id="time">15</span></div>
+            <div id="timer">Score:<span id="score">0</span></div>
+            <button class="reset" onclick="reset()">Reset</button>
+        </div>
+    </section>
+    <div class="instructions">
+        <hr>
+            <h3>
+                How to Play:
+            </h3>
+            <p class="rules">
+                Decrypt as many puzzles as possible.
+                For each puzzle, you are given two clues - a seven-letter word, and a hint for the answer. 
+                In the seven-letter word, a <span style="color: #14A44D; font-weight: bolder;">green</span> square indicates that the letter is in the answer, in <span style="font-style: italic;">the same spot</span>. 
+                A <span style="color: #3B71CA; font-weight: bolder;">blue</span> square indicates that the letter is also in the answer, but in <span style="font-style: italic;">a different spot</span>. 
+                A <span style="color: gray; font-weight: bolder;">gray</span> square indicates that the letter is not in the answer.
+                <br><br>
+                <span style="font-weight: bolder;">Example:</span> the word <span style="font-weight: bold;">SPANDEX</span>, coupled with the clue <span style="font-style: italic;">"instruction clarifier,"</span> rearranges to become <span style="font-weight: bold;">EXAMPLE</span>.
+                <br>
+                <br>
+            </p>
+                <div class="inthecard" id="spandex">
+                    <div class="inputbox" id="e" style="background-color: gray;"><p>S</p></div>
+                    <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>P</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>A</p></div>
+                    <div class="inputbox" id="e" style="background-color: gray;"><p>N</p></div>
+                    <div class="inputbox" id="e" style="background-color: gray;"><p>D</p></div>
+                    <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>E</p></div>
+                    <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>X</p></div>
+                </div>
+                <div class="inthecard">
+                    <p id="exampleclue">instruction clarifier</p>
+                </div>
+                <br>
+                <br>
+                <div class="inthecard" id="example">
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>X</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>A</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>M</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>P</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>L</p></div>
+                    <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+                </div>
+                <br><br>
+                <p class="rules">
+                Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle and start the timer.
+                You are allotted 15 seconds to solve each puzzle.
+                With each correct answer, the timer restarts.
+                Once the timer runs out, the game is over.
+                Press <span style="color: #875fd8; font-weight: bolder;">Reset</span> at any point to reset the game.
+            </p>
+            <br>
+        </div>
+    </section>
+    <div>
+        <hr>
+    </div>
+    <p class="rules">
+        <span style="font-weight: bolder;">Decrypt</span> is word game inspired by Josh Wardle's <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> that 
+        incorporates clues reminscent of crossword puzzles, and a timer that keep players on their toes and rewards them for correct guesses.
+    </p>
+</div>
+</body>
+</html>
