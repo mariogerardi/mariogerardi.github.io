@@ -62,7 +62,7 @@ section {
 .buttons {
     width: 95%;
     height: 8vh;
-    margin-top: 5vh;
+    margin-top: 2vh;
     margin-bottom: 5vh;
     display: flex;
     justify-content: space-around;
@@ -102,8 +102,8 @@ section {
 }
 
 #title {
-    margin-top: 5vmax;
-    margin-bottom: 5vmax;
+    margin-top: 3vmax;
+    margin-bottom: 3vmax;
 }
 
 #q {
