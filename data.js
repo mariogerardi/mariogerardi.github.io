@@ -167,6 +167,7 @@ function wrong() {
 }
 
 function play(i) {
+    document.getElementById('disable').style.pointerEvents = "none";
     setWord(i);
     setClue(i);
     document.getElementById(`clue`).className = "default"        
@@ -192,7 +193,7 @@ function play(i) {
             if (yourAnswer.toUpperCase() === realAnswer) {
                 score++;
                 for (let i = 0; i < 7; i++) {
-                    document.getElementById(`a${i+1}`).className = "inputbox pop correctblocks";
+                    document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
                 };
                 document.getElementById('clue').innerHTML = "&check; Correct"
                 document.getElementById(`clue`).className = "pop correct"        
@@ -209,9 +210,15 @@ function play(i) {
                 }, "500");
             } else {
                 document.getElementById('clue').innerHTML = "&cross; Incorrect"
+                for (let i = 0; i < 7; i++) {
+                    document.getElementById(`a${i+1}`).className = "inputbox shake";    
+                };
                 setTimeout(() => {
                     document.getElementById('clue').innerHTML = clue;
-                    document.getElementById(`clue`).className = "default"        
+                    document.getElementById(`clue`).className = "default" 
+                    for (let i = 0; i < 7; i++) {
+                        document.getElementById(`a${i+1}`).className = "inputbox";    
+                    };       
                 }, "500");
                 document.getElementById(`clue`).className = "pop incorrect"
             }
