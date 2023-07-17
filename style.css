@@ -183,6 +183,12 @@ hr {
     font-size: x-large;
 }
 
+#arrow {
+    font-size: xx-large;
+    color: whitesmoke;
+    margin: 0;
+}
+
 .correctblocks {
     background-image:linear-gradient(#14A44D, #14A44D);
 }
