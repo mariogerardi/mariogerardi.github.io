@@ -3,14 +3,13 @@ const p = "#3B71CA";
 const n = "gray";
 
 let score = 0;
-let timeleft = 60;
 let theword = "";
 
 const wordlist = [
     {
         answer: "ACHIEVE", 
         clue1: "RECEIVE",
-        clue2: "accomplish",
+        clue2: "accomplish; pull off",
         color: [n, p, p, n, p, g, g],
     },
     {
@@ -22,14 +21,26 @@ const wordlist = [
     {
         answer: "BLATANT", 
         clue1: "PLASTIC",
-        clue2: "obvious; lacking in subtlety",
+        clue2: "obvious; lacking subtlety",
         color: [n, g, g, n, p, n, n],
+    },
+    {
+        answer: "CATWALK", 
+        clue1: "HACKSAW",
+        clue2: "at the center of a fashion show",
+        color: [n, g, p, p, n, p, p]
     },
     {
         answer: "COMPASS", 
         clue1: "CARCASS",
-        clue2: "tool with a magnetized pointer",
+        clue2: "travel guide, with cardinal directions",
         color: [g, n, n, n, g, g, g]
+    },
+    {
+        answer: "COWBELL", 
+        clue1: "SWOLLEN",
+        clue2: "it may be heard in a herd",
+        color: [n, p, p, p, p, p, n]
     },
     {
         answer: "CURRANT", 
@@ -46,7 +57,7 @@ const wordlist = [
     {
         answer: "DESTINY", 
         clue1: "DISPLAY",
-        clue2: "fate",
+        clue2: "fate; the inevitable",
         color: [g, p, g, n, n, n, g]
     },
     {
@@ -54,12 +65,6 @@ const wordlist = [
         clue1: "PLASTIC",
         clue2: "having far-reaching effect",
         color: [n, n, g, g, g, g, g]
-    },
-    {
-        answer: "EPITHET", 
-        clue1: "UPTIGHT",
-        clue2: "nickname",
-        color: [n, g, p, p, n, p, g]
     },
     {
         answer: "FICTION", 
@@ -70,13 +75,13 @@ const wordlist = [
     {
         answer: "HARPOON", 
         clue1: "CARTOON",
-        clue2: "a barbed spear",
+        clue2: "a barbed spear or javelin",
         color: [n, g, g, n, g, g, g]
     },
     {
         answer: "HELPFUL", 
         clue1: "HANDFUL",
-        clue2: "productive; valuable",
+        clue2: "lending a hand; of service",
         color: [g, n, n, n, g, g, g]
     },
     {
@@ -100,7 +105,7 @@ const wordlist = [
     {
         answer: "LASAGNA", 
         clue1: "PANACEA",
-        clue2: "wide and flat pasta",
+        clue2: "layered pasta dish",
         color: [n, g, p, g, n, n, g]
     },
     {
@@ -112,19 +117,25 @@ const wordlist = [
     {
         answer: "NONSTOP", 
         clue1: "MOISTEN",
-        clue2: "all day, every day, on and on and on...",
+        clue2: "all day, every day, on and on...",
         color: [n, g, n, g, g, n, p]
+    },
+    {
+        answer: "ORGANIC", 
+        clue1: "SCARING",
+        clue2: "occurring naturally",
+        color: [n, p, p, p, p, p, p]
     },
     {
         answer: "PANCAKE", 
         clue1: "PEACOCK",
-        clue2: "flat breakfast food",
+        clue2: "often stacked breakfast staple",
         color: [g, p, p, g, n, n, p]
     },
     {
         answer: "QUARREL", 
         clue1: "SQUARED",
-        clue2: "altercation",
+        clue2: "altercation; argument",
         color: [n, p, p, p, g, g, n]
     },
     {
@@ -132,6 +143,18 @@ const wordlist = [
         clue1: "INSPIRE",
         clue2: "a quick breather",
         color: [n, n, g, g, g, p, g]
+    },
+    {
+        answer: "TRAFFIC", 
+        clue1: "AFFLICT",
+        clue2: "many commuters, collectively",
+        color: [p, p, p, n, p, p, p]
+    },
+    {
+        answer: "UNDERGO", 
+        clue1: "FOUNDER",
+        clue2: "experience; be subjected to",
+        color: [n, p, p, p, p, p, p]
     },
 ]
 
@@ -160,19 +183,13 @@ function reset() {
     location.reload();
 }
 
-function wrong() {
-    for (let i = 0; i < 7; i++) {
-        document.getElementById(`a${i}`).style.animation = "wiggle 1s linear normal";
-    }
-}
-
 function play(i) {
     document.getElementById('disable').style.pointerEvents = "none";
     setWord(i);
     setClue(i);
     document.getElementById(`clue`).className = "default"        
     let clue = document.getElementById('clue').innerHTML;
-    timeleft = 15;
+    timeleft = 20;
     let realAnswer = wordlist[i].answer;
     theword = realAnswer;
     if (score === 0) {

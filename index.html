@@ -37,7 +37,7 @@
     </div>
     <div class="buttons">
         <button class="beginreset" id="disable" onclick="play(Math.floor(Math.random() * 13))">Begin</button>
-        <div id="timerscore">Time:<span id="time">15</span></div>
+        <div id="timerscore">Time:<span id="time">20</span></div>
         <div id="timerscore">Score:<span id="score">0</span></div>
         <button class="beginreset" onclick="reset()">Reset</button>
     </div>
@@ -45,8 +45,8 @@
         <hr>
         <h2>How to Play:</h2>
         <p class="rules">
-            Decrypt as many puzzles as possible.
-            For each puzzle, you are given two clues - a seven-letter word, and a hint for the answer. 
+            Solve as many puzzles as possible.
+            For each puzzle, you are given <span style="font-weight: bolder;">two</span> clues - a seven-letter word, and a hint for the answer. 
             In the seven-letter word, a <span style="color: #14A44D; font-weight: bolder;">green</span> square indicates that the letter is in the answer, in <span style="font-style: italic;">the same spot</span>. 
             A <span style="color: #3B71CA; font-weight: bolder;">blue</span> square indicates that the letter is also in the answer, but in <span style="font-style: italic;">a different spot</span>. 
             A <span style="color: gray; font-weight: bolder;">gray</span> square indicates that the letter is not in the answer.
@@ -55,32 +55,32 @@
             <br><br>
         </p>
         <div class="examplecard">
-        <div class="inthecard" id="expanse">
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>X</p></div>
-            <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>P</p></div>
-            <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>A</p></div>
-            <div class="inputbox" id="e" style="background-color: gray;"><p>N</p></div>
-            <div class="inputbox" id="e" style="background-color: gray;"><p>S</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
-        </div>
-        <div id="clue2">
-            <p id="exampleclue">instruction clarifier</p>
-        </div>
-        <br>
-        <div class="inthecard" id="example">
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>X</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>A</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>M</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>P</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>L</p></div>
-            <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
-        </div>
+            <div class="inthecard" id="expanse">
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>X</p></div>
+                <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>P</p></div>
+                <div class="inputbox" id="e" style="background-color: #3B71CA;"><p>A</p></div>
+                <div class="inputbox" id="e" style="background-color: gray;"><p>N</p></div>
+                <div class="inputbox" id="e" style="background-color: gray;"><p>S</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+            </div>
+            <div id="clue2">
+                <p id="exampleclue">instruction clarifier</p>
+            </div>
+            <br>
+            <div class="inthecard" id="example">
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>X</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>A</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>M</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>P</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>L</p></div>
+                <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
+            </div>
         </div>
         <p class="rules"><br>
         Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle and start the timer.
-        You are allotted 15 seconds to solve each puzzle.
+        You are allotted 20 seconds to solve each puzzle.
         With each correct answer, the timer resets.
         Once the timer runs out, the game is over.
         Press <span style="color: #875fd8; font-weight: bolder;">Reset</span> at any point to reset the game.
