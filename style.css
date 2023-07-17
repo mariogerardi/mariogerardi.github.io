@@ -1,16 +1,19 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-    color: whitesmoke;
     caret-color: transparent;
+    color: whitesmoke;
 }
 
 body {
     background-image: linear-gradient(#110e1c, #121212);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media (min-width: 850px) {
     body {
-        width: 40vw;
+        width: 42vw;
         margin: auto;
     }
 }
@@ -20,37 +23,79 @@ input {
     -moz-appearance: none;
     appearance: none;
     padding: 0;
-    border: none;
-    border-radius: 2.5px;
 }
 
 button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: none;
-    border-radius: 2.5px;
-    text-align: center;
 }
 
 hr {
     color: black;
-    background-color: #875fd8;
 }
 
-.container {
-    height: 95%;
+.inthecard {
+    height: fit-content;
     width: 95%;
-    margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-around;
 }
 
-section {
-    text-align: left;
+#clue1 {
+    width: 100%;
+    margin-top: 1vh;
+}
+
+#clue2 {
+    width: fit-content;
+}
+
+#title {
+    margin-top: 1vmax;
+    margin-bottom: 1vmax;
+}
+
+.inputbox {
+    width: 5.25vmax;
+    height: 5.25vmax;
+    font-size: 32px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 900;
     display: flex;
+    align-items: center;
     justify-content: center;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#q {
+    font-size: x-large;
+    background-color: #875fd8;
+    width: 100%;
+}
+
+.card {
+    height: 22.5vh;
+    width: 95%;
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.examplecard {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -62,17 +107,19 @@ section {
 .buttons {
     width: 95%;
     height: 8vh;
-    margin-top: 2vh;
-    margin-bottom: 5vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.begin {
+.instructions {
+    width: 95%;
+}
+
+.beginreset {
     width: 25%;
-    height: 100%;
-    font-size: medium;
+    height: 75%;
+    font-size: large;
     background-color: #875fd8;
     color: whitesmoke;
     border-radius: 5px;
@@ -81,110 +128,47 @@ section {
     text-align: center;  
 }
 
-.reset {
-    width: 25%;
-    height: 100%;
-    font-size: medium;
-    background-color: #875fd8;
-    color: whitesmoke;
-    border-radius: 5px;
-    font-weight: 900;
-    border-width: 0;
-    text-align: center;
-}
-
-.card {
-    height: 8vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 12vh;
-}
-
-#title {
-    margin-top: 3vmax;
-    margin-bottom: 3vmax;
-}
-
-#q {
-    background-color: #875fd8;
-    border-color: #875fd8;
+#expanse {
+    width: 100%;
 }
 
 #e {
     background-color: #875fd8;
     border-color: #875fd8;
-    width: 5vmax;
-    height: 5vmax;
 }
-
-#q1, #q2, #q3, #q4, #q5, #q6, #q7 {
-    margin-top: 10vh;
-}
-
-.inthecard {
-    height: 5vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputbox {
-    margin-left: .3vh;
-    margin-right: .3vh;
-    width: 5.5vmax;
-    height: 5.5vmax;
-    font-size: 36px;
-    font-family: Helvetica, sans-serif;
-    font-weight: 900;
-    color:white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: none;
-    border-radius: 2.5px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-  
 
 #a1, #a2, #a3, #a4, #a5, #a6, #a7 {
     background-color: #875fd8;
+    margin-bottom: 1vh;
 } 
 
 #clue {
-    padding: 1vh;
+    padding: 1vmax;
     font-size: large;
     font-style: italic;
-    margin-top: 15vh;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 900;
 }
 
 #example {
-    margin-top: 2vh;
+    width: 100%;
+    margin-top: 1vh;
 }
 
 #exampleclue {
-    padding: 1vh;
+    padding: 1vmax;
     font-size: large;
     font-style: italic;
-    margin-top: 8vh;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 900;
     background-image:linear-gradient(gray, gray);
 }
 
-#timer {
+#timerscore {
     width: 20%;
-    height: 8vh;
+    height: 75%;
     font-size: small;
     background-color: #875fd8;
-    color: whitesmoke;
     border-radius: 5px;
     font-weight: 900;
     border-width: 0;
@@ -199,27 +183,23 @@ section {
     font-size: x-large;
 }
 
-.correct {
-    padding: 1vmax;
-    background-image:linear-gradient(#14A44D, #14A44D);
-}
-
 .correctblocks {
     background-image:linear-gradient(#14A44D, #14A44D);
 }
 
+.correct {
+    background-image:linear-gradient(#14A44D, #14A44D);
+}
+
 .incorrect {
-    padding: 1vmax;
     background-image:linear-gradient(#a42014, #a42014);
 }
 
 .default {
-    padding: 1vmax;
     background-image:linear-gradient(gray, gray);
 }
 
 .invisibleclue {
-    padding: 1vmax;
     background-image:linear-gradient(transparent, transparent);
 }
   
