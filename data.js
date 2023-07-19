@@ -3,7 +3,9 @@ const p = "#3B71CA";
 const n = "gray";
 
 let score = 0;
+let gamemode = 2;
 let theword = "";
+let dailyScore = 0;
 
 const wordlist = [
     {
@@ -156,6 +158,45 @@ const wordlist = [
         clue2: "experience; be subjected to",
         color: [n, p, p, p, p, p, p]
     },
+    {
+        answer: "FALLACY", 
+        clue1: "WALLABY",
+        clue2: "a mistaken belief",
+        color: [n, g, g, g, g, n, g]
+    },
+]
+
+const daily = [
+    {
+        answer: "FALLACY", 
+        clue1: "WALLABY",
+        clue2: "a mistaken belief",
+        color: [n, g, g, g, g, n, g]
+    },
+    {
+        answer: "UNDERGO", 
+        clue1: "FOUNDER",
+        clue2: "experience; be subjected to",
+        color: [n, p, p, p, p, p, p]
+    },
+    {
+        answer: "PANCAKE", 
+        clue1: "PEACOCK",
+        clue2: "often stacked breakfast staple",
+        color: [g, p, p, g, n, n, p]
+    },
+    {
+        answer: "MELANIN", 
+        clue1: "KERATIN",
+        clue2: "skin pigment",
+        color: [n, g, n, g, n, g, g]
+    },
+    {
+        answer: "TRAFFIC", 
+        clue1: "AFFLICT",
+        clue2: "many commuters, collectively",
+        color: [p, p, p, n, p, p, p]
+    }
 ]
 
 function setWord (i) {
@@ -165,8 +206,19 @@ function setWord (i) {
     }
 }
 
+function setWordDaily (i) {
+    for (let j = 0; j < 7; j++) {
+        document.getElementById(`l${j+1}`).innerHTML = daily[i].clue1.charAt(j);
+        document.getElementById(`q${j+1}`).style.backgroundColor = daily[i].color[j];
+    }
+}
+
 function setClue (i) {
     document.getElementById("clue").innerHTML = wordlist[i].clue2;
+}
+
+function setClueDaily (i) {
+    document.getElementById("clue").innerHTML = daily[i].clue2;
 }
 
 function guess() {
@@ -183,76 +235,184 @@ function reset() {
     location.reload();
 }
 
-function play(i) {
-    document.getElementById('disable').style.pointerEvents = "none";
-    setWord(i);
-    setClue(i);
-    document.getElementById(`clue`).className = "default"        
-    let clue = document.getElementById('clue').innerHTML;
-    timeleft = 20;
-    let realAnswer = wordlist[i].answer;
-    theword = realAnswer;
-    if (score === 0) {
-        let downloadTimer = setInterval(function(a) {
-            if (timeleft <= 0) {
-                clearInterval(downloadTimer);
-                alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
-                reset();
-            } else {
-                document.getElementById("time").innerHTML = timeleft;
-            }
-            timeleft -= 1;
-        }, 1000);
-    };
-    document.addEventListener('keydown', function moveInput(event, i) {
-        if (event.key == 'Enter') {
-            let yourAnswer = guess();
-            if (yourAnswer.toUpperCase() === realAnswer) {
-                score++;
-                for (let i = 0; i < 7; i++) {
-                    document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
-                };
-                document.getElementById('clue').innerHTML = "&check; Correct"
-                document.getElementById(`clue`).className = "pop correct"        
-                setTimeout(() => {
+function endless() {
+    document.getElementById('endless').style.backgroundColor = g;
+    document.getElementById('endless').style.borderWidth = "2px";
+    document.getElementById('endless').style.borderColor = "whitesmoke";
+    document.getElementById('daily5').style.backgroundColor = p;
+    document.getElementById('daily5').style.borderWidth = 0;
+    if (gamemode === 1 || gamemode === 2) {
+        gamemode = 0;
+    }
+}
+
+function daily5() {
+    document.getElementById('daily5').style.backgroundColor = g;
+    document.getElementById('daily5').style.borderWidth = "2px";
+    document.getElementById('daily5').style.borderColor = "whitesmoke";
+    document.getElementById('endless').style.backgroundColor = p;
+    document.getElementById('endless').style.borderWidth = 0;
+    if (gamemode === 0 || gamemode === 2) {
+        gamemode = 1;
+    }
+}
+
+function dailyTimer() {
+    let downloadTimer = setInterval(function() {
+        document.getElementById("time").innerHTML = timeleft;
+        timeleft += 1;
+    }, 1000);
+}
+
+function play() {
+    if (gamemode === 0) {
+        document.getElementById('disable').style.pointerEvents = "none";
+        document.getElementById('endless').style.pointerEvents = "none";
+        document.getElementById('daily5').style.pointerEvents = "none";
+        i = Math.floor(Math.random() * wordlist.length)
+        setWord(i);
+        setClue(i);
+        document.getElementById(`clue`).className = "default"        
+        let clue = document.getElementById('clue').innerHTML;
+        timeleft = 20;
+        let realAnswer = wordlist[i].answer;
+        theword = realAnswer;
+        if (score === 0) {
+            let downloadTimer = setInterval(function(a) {
+                if (timeleft <= 0) {
+                    clearInterval(downloadTimer);
+                    alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
+                    reset();
+                } else {
+                    document.getElementById("time").innerHTML = timeleft;
+                }
+                timeleft -= 1;
+            }, 1000);
+        };
+        document.addEventListener('keydown', function moveInput(event, i) {
+            if (event.key == 'Enter') {
+                let yourAnswer = guess();
+                if (yourAnswer.toUpperCase() === realAnswer) {
+                    score++;
                     for (let i = 0; i < 7; i++) {
-                        document.getElementById(`a${i+1}`).value = "";
-                        document.getElementById(`a${i+1}`).className = "inputbox";
+                        document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
                     };
-                }, "500");
-                document.getElementById("score").innerHTML = score;
-                this.removeEventListener('keydown', moveInput);
-                setTimeout(() => {
-                    play(Math.floor(Math.random() * wordlist.length));
-                }, "500");
-            } else {
-                document.getElementById('clue').innerHTML = "&cross; Incorrect"
-                for (let i = 0; i < 7; i++) {
-                    document.getElementById(`a${i+1}`).className = "inputbox shake";    
-                };
-                setTimeout(() => {
-                    document.getElementById('clue').innerHTML = clue;
-                    document.getElementById(`clue`).className = "default" 
+                    document.getElementById('clue').innerHTML = "&check; Correct"
+                    document.getElementById(`clue`).className = "pop correct"        
+                    setTimeout(() => {
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).value = "";
+                            document.getElementById(`a${i+1}`).className = "inputbox";
+                        };
+                    }, "500");
+                    document.getElementById("score").innerHTML = score;
+                    this.removeEventListener('keydown', moveInput);
+                    setTimeout(() => {
+                        play(Math.floor(Math.random() * wordlist.length));
+                    }, "500");
+                } else {
+                    document.getElementById('clue').innerHTML = "&cross; Incorrect"
                     for (let i = 0; i < 7; i++) {
-                        document.getElementById(`a${i+1}`).className = "inputbox";    
-                    };       
-                }, "500");
-                document.getElementById(`clue`).className = "pop incorrect"
+                        document.getElementById(`a${i+1}`).className = "inputbox shake";    
+                    };
+                    setTimeout(() => {
+                        document.getElementById('clue').innerHTML = clue;
+                        document.getElementById(`clue`).className = "default" 
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox";    
+                        };       
+                    }, "500");
+                    document.getElementById(`clue`).className = "pop incorrect"
+                }
+            } else if (event.key == 'Backspace') {
+                document.activeElement.innerHTML = ""
+                setTimeout(() => {
+                    document.activeElement.previousElementSibling.focus();    
+                }, "10");
+            } else {
+                document.activeElement.value = ""; 
+                setTimeout(() => { 
+                    document.activeElement.innerHTML = event.key;
+                }, "10");
+                setTimeout(() => {
+                    document.activeElement.nextElementSibling.focus();     
+                }, "12");
             }
-        } else if (event.key == 'Backspace') {
-            document.activeElement.innerHTML = ""
-            setTimeout(() => {
-                document.activeElement.previousElementSibling.focus();    
-            }, "10");
-        } else {
-            document.activeElement.value = ""; 
-            setTimeout(() => { 
-                document.activeElement.innerHTML = event.key;
-            }, "10");
-            setTimeout(() => {
-                document.activeElement.nextElementSibling.focus();     
-            }, "12");
+        });
+        document.getElementById("a1").focus();
+    } else if (gamemode === 1) {
+        document.getElementById('disable').style.pointerEvents = "none";
+        document.getElementById('endless').style.pointerEvents = "none";
+        document.getElementById('daily5').style.pointerEvents = "none";
+        if (dailyScore === 5) {
+            alert(`Congratulations! Your total time to complete today's Daily 5 was ${timeleft-1} seconds! Today's words were ${daily[0].answer}, ${daily[1].answer}, ${daily[2].answer}, ${daily[3].answer}, and ${daily[4].answer}. Thanks for playing!`);
+            reset();
+        };
+        setWordDaily(dailyScore);
+        setClueDaily(dailyScore);
+        if (dailyScore === 0) {
+            timeleft = 0;
         }
-    });
-    document.getElementById("a1").focus();
+        document.getElementById(`clue`).className = "default"        
+        let clue = document.getElementById('clue').innerHTML;
+        let realAnswer = daily[dailyScore].answer;
+        theword = realAnswer;
+        if (score === 0) {
+            dailyTimer();
+        }
+        document.addEventListener('keydown', function moveInput(event, i) {
+            if (event.key == 'Enter') {
+                let yourAnswer = guess();
+                if (yourAnswer.toUpperCase() === realAnswer) {
+                    score++;
+                    for (let i = 0; i < 7; i++) {
+                        document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
+                    };
+                    document.getElementById('clue').innerHTML = "&check; Correct"
+                    document.getElementById(`clue`).className = "pop correct"        
+                    setTimeout(() => {
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).value = "";
+                            document.getElementById(`a${i+1}`).className = "inputbox";
+                        };
+                    }, "500");
+                    document.getElementById("score").innerHTML = score;
+                    dailyScore++;
+                    this.removeEventListener('keydown', moveInput);
+                    setTimeout(() => {
+                        play();
+                    }, "500");
+                } else {
+                    document.getElementById('clue').innerHTML = "&cross; Incorrect"
+                    for (let i = 0; i < 7; i++) {
+                        document.getElementById(`a${i+1}`).className = "inputbox shake";    
+                    };
+                    setTimeout(() => {
+                        document.getElementById('clue').innerHTML = clue;
+                        document.getElementById(`clue`).className = "default" 
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox";    
+                        };       
+                    }, "500");
+                    document.getElementById(`clue`).className = "pop incorrect"
+                }
+            } else if (event.key == 'Backspace') {
+                document.activeElement.innerHTML = ""
+                setTimeout(() => {
+                    document.activeElement.previousElementSibling.focus();    
+                }, "10");
+            } else {
+                document.activeElement.value = ""; 
+                setTimeout(() => { 
+                    document.activeElement.innerHTML = event.key;
+                }, "10");
+                setTimeout(() => {
+                    document.activeElement.nextElementSibling.focus();     
+                }, "12");
+            }
+        });
+        document.getElementById("a1").focus();
+    } else {
+        alert(`You must select a gamemode first.`);
+    }
 }

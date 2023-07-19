@@ -11,6 +11,10 @@
     <div class="inthecard" id="title">
         <div class="inputbox" id="q"><p>&#9733;&nbsp;&nbsp;&nbsp;D E C R Y P T&nbsp;&nbsp;&nbsp;&#9733;</p></div>
     </div>
+    <div class="buttons">
+        <button class="gamemode" id="endless" onclick="endless()">ENDLESS</button>
+        <button class="gamemode" id="daily5" onclick="daily5()">DAILY 5</button>
+    </div>
     <hr width="95%">
     <div class="card">
         <div class="inthecard" id="clue1">
@@ -36,23 +40,24 @@
         <input class="inputbox" style="text-transform:uppercase" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" id="a7">
     </div>
     <div class="buttons">
-        <button class="beginreset" id="disable" onclick="play(Math.floor(Math.random() * 13))">Begin</button>
+        <button class="beginreset" id="disable" onclick="play()">Begin</button>
         <div id="timerscore">Time:<span id="time">20</span></div>
         <div id="timerscore">Score:<span id="score">0</span></div>
         <button class="beginreset" onclick="reset()">Reset</button>
     </div>
     <div class="instructions">
         <hr>
+        <br>
         <h2>How to Play:</h2>
+        <br>
         <p class="rules">
-            Solve as many puzzles as possible.
             For each puzzle, you are given <span style="font-weight: bolder;">two</span> clues - a seven-letter word, and a hint for the answer. 
             In the seven-letter word, a <span style="color: #14A44D; font-weight: bolder;">green</span> square indicates that the letter is in the answer, in <span style="font-style: italic;">the same spot</span>. 
             A <span style="color: #3B71CA; font-weight: bolder;">blue</span> square indicates that the letter is also in the answer, but in <span style="font-style: italic;">a different spot</span>. 
             A <span style="color: gray; font-weight: bolder;">gray</span> square indicates that the letter is not in the answer.
             <br><br>
             <span style="font-weight: bolder;">Example:</span> the word <span style="font-weight: bold;">EXPANSE</span>, coupled with the clue <span style="font-style: italic;">"instruction clarifier,"</span> rearranges to become <span style="font-weight: bold;">EXAMPLE</span>.
-            <br><br>
+            <br><br><br>
         </p>
         <div class="examplecard">
             <div class="inthecard" id="expanse">
@@ -64,6 +69,7 @@
                 <div class="inputbox" id="e" style="background-color: gray;"><p>S</p></div>
                 <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
             </div>
+            <br>
             <div id="clue2">
                 <p id="exampleclue">instruction clarifier</p>
             </div>
@@ -79,18 +85,32 @@
                 <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
             </div>
         </div>
+        <br><br><br>
+        <h3>Endless:</h2>
         <p class="rules"><br>
+        Ensure that ENDLESS is selected at the top of the page.
         Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle and start the timer.
         You are allotted 20 seconds to solve each puzzle.
         With each correct answer, the timer resets.
         Once the timer runs out, the game is over.
-        Press <span style="color: #875fd8; font-weight: bolder;">Reset</span> at any point to reset the game.
         </p>
+        <br><br>
+        <h3>Daily 5:</h2>
+        <p class="rules"><br>
+        Ensure that DAILY 5 is selected at the top of the page.
+        Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle.
+        You are allotted as much time as necessary to solve each puzzle.
+        With each correct answer, a new puzzle is generated - you may not move onto the next puzzle until you have completed the previous one.
+        After you've completed the Daily 5, the timer stops, and your score is displayed.
+        <br><br>
         <hr>
+        <br>
         <p class="rules">
             <span style="font-weight: bolder;">Decrypt</span> is word game inspired by Josh Wardle's <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> that 
             incorporates clues reminscent of crossword puzzles, and a timer that keep players on their toes and rewards them for correct guesses.
         </p>
+        <br>
+        <br>
     </div>
 </body>
 </html>
