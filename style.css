@@ -90,7 +90,7 @@ p, h2, h3 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: start;
 }
 
 .examplecard {
@@ -99,7 +99,7 @@ p, h2, h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
 }
 
 .rules {
