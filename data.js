@@ -74,6 +74,78 @@ const fourLetterWords = [
         clue2: "part of a bird or building",
         color: [g, n, g, n]
     },
+    {
+        answer: "IDEA", 
+        clue1: "DEAL",
+        clue2: "product of brainstorming",
+        color: [p, p, p, n]
+    },
+    {
+        answer: "WHIM", 
+        clue1: "SHIN",
+        clue2: "sudden impulse",
+        color: [n, g, g, n]
+    },
+    {
+        answer: "PLOT", 
+        clue1: "LOOT",
+        clue2: "storyline; what a spoiler might spoil",
+        color: [p, n, g, g]
+    },
+    {
+        answer: "TREE", 
+        clue1: "FEET",
+        clue2: "maple or sequoia, for example",
+        color: [n, p, g, p]
+    },
+    {
+        answer: "SONG", 
+        clue1: "SWIG",
+        clue2: "ballad or serenade, for example",
+        color: [g, n, n, g]
+    },
+    {
+        answer: "FLAG", 
+        clue1: "CALF",
+        clue2: "national symbol",
+        color: [n, p, p, p]
+    },
+    {
+        answer: "GLUE", 
+        clue1: "LURE",
+        clue2: "sticky arts and crafts supply",
+        color: [n, p, p, p]
+    },
+    {
+        answer: "ALSO", 
+        clue1: "SOUL",
+        clue2: "in addition",
+        color: [p, p, n, p]
+    },
+    {
+        answer: "SHOE", 
+        clue1: "HOSE",
+        clue2: "clog or sneaker, for example",
+        color: [p, p, p, g]
+    },
+    {
+        answer: "BOWL", 
+        clue1: "BLOW",
+        clue2: "soup or cereal dish",
+        color: [g, p, p, p]
+    },
+    {
+        answer: "ONCE", 
+        clue1: "CONE",
+        clue2: "at some point; without repetition",
+        color: [p, p, p, g]
+    },
+    {
+        answer: "WOLF", 
+        clue1: "FLOW",
+        clue2: "common fairytale antagonist",
+        color: [p, p, p, p]
+    },
 ]
 
 const fiveLetterWords = [
@@ -137,6 +209,36 @@ const fiveLetterWords = [
         clue2: "speed-detecting device",
         color: [g, g, g, n, n]
     },
+    {
+        answer: "CLEAR", 
+        clue1: "PEARL",
+        clue2: "transparent; unambiguous",
+        color: [n, p, p, p, p]
+    },
+    {
+        answer: "ZEBRA", 
+        clue1: "BLAZE",
+        clue2: "striped zoo animal",
+        color: [p, n, p, p, p]
+    },
+    {
+        answer: "TRIAL", 
+        clue1: "LATER",
+        clue2: "experiment; run-through",
+        color: [p, p, p, n, p]
+    },
+    {
+        answer: "FOCUS", 
+        clue1: "BOGUS",
+        clue2: "concentrate",
+        color: [n, g, n, g, g]
+    },
+    {
+        answer: "LIMBO", 
+        clue1: "BLOOM",
+        clue2: "middle state; gray area",
+        color: [p, p, p, n, p]
+    },
 ]
 
 const sixLetterWords = [
@@ -163,12 +265,6 @@ const sixLetterWords = [
         clue1: "CRUNCH",
         clue2: "stoop; lay low",
         color: [g, g, p, n, g, g]
-    },
-    {
-        answer: "FIZZLE", 
-        clue1: "BLINTZ",
-        clue2: "end or fail, weakly",
-        color: [n, p, p, n, n, p]
     },
     {
         answer: "AVATAR", 
@@ -199,6 +295,54 @@ const sixLetterWords = [
         clue1: "CANARY",
         clue2: "honesty",
         color: [g, g, g, n, p, n]
+    },
+    {
+        answer: "CRATER", 
+        clue1: "RACKET",
+        clue2: "lunar feature; meteorite's creation",
+        color: [p, p, p, n, g, p]
+    },
+    {
+        answer: "CREDIT", 
+        clue1: "TRICKY",
+        clue2: "give recognition... or, a cash alternative",
+        color: [p, g, p, p, n, n]
+    },
+    {
+        answer: "BALLOT", 
+        clue1: "COBALT",
+        clue2: "voting slip",
+        color: [n, p, p, p, p, g]
+    },
+    {
+        answer: "BALLOT", 
+        clue1: "COBALT",
+        clue2: "voting slip",
+        color: [n, p, p, p, p, g]
+    },
+    {
+        answer: "RECORD", 
+        clue1: "GROCER",
+        clue2: "best known performance... or, a jukebox item",
+        color: [n, p, p, p, p, p]
+    },
+    {
+        answer: "SUBTLE", 
+        clue1: "BULLET",
+        clue2: "understated; nuanced",
+        color: [p, g, p, n, p, p]
+    },
+    {
+        answer: "THRIVE", 
+        clue1: "SHRINE",
+        clue2: "succeed; flourish; prosper",
+        color: [n, g, g, g, n, g]
+    },
+    {
+        answer: "GAZEBO", 
+        clue1: "BRONZE",
+        clue2: "popular setting for an outdoor wedding",
+        color: [p, n, p, n, p, p]
     },
 ]
 
