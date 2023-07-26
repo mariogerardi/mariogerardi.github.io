@@ -7,6 +7,34 @@ let gamemode = 2;
 let theword = "";
 let dailyScore = 0;
 
+const fourLetterWords = [
+    {
+        answer: "BARE", 
+        clue1: "BAKE",
+        clue2: "stripped; unadorned",
+        color: [g, g, n, g],
+    },
+    {
+        answer: "WALK", 
+        clue1: "FOLK",
+        clue2: "stroll",
+        color: [n, n, g, g]
+    },
+    {
+        answer: "PLUG", 
+        clue1: "GULP",
+        clue2: "hype; promote",
+        color: [p, p, p, p],
+    },
+    {
+        answer: "AQUA", 
+        clue1: "QUIP",
+        clue2: "shade of blue at the swimming pool",
+        color: [p, p, n, n]
+    },
+]
+
+
 const wordlist = [
     {
         answer: "ACHIEVE", 
@@ -200,9 +228,16 @@ const daily = [
 ]
 
 function setWord (i) {
-    for (let j = 0; j < 7; j++) {
-        document.getElementById(`l${j+1}`).innerHTML = wordlist[i].clue1.charAt(j);
-        document.getElementById(`q${j+1}`).style.backgroundColor = wordlist[i].color[j];
+    if (score < 4) {
+        for (let j = 0; j < 4; j++) {
+            document.getElementById(`l${j+1}`).innerHTML = fourLetterWords[i].clue1.charAt(j);
+            document.getElementById(`q${j+1}`).style.backgroundColor = fourLetterWords[i].color[j];
+      }
+    } else if (score >= 4 && score < 20) {
+        for (let j = 0; j < 7; j++) {
+            document.getElementById(`l${j+1}`).innerHTML = wordlist[i].clue1.charAt(j);
+            document.getElementById(`q${j+1}`).style.backgroundColor = wordlist[i].color[j];
+        }
     }
 }
 
@@ -214,7 +249,12 @@ function setWordDaily (i) {
 }
 
 function setClue (i) {
-    document.getElementById("clue").innerHTML = wordlist[i].clue2;
+    if (score < 4 ) {
+        document.getElementById("clue").innerHTML = fourLetterWords[i].clue2;
+    }
+    if (score >= 4 && score < 20 ) {
+        document.getElementById("clue").innerHTML = wordlist[i].clue2;
+    }
 }
 
 function setClueDaily (i) {
@@ -266,80 +306,175 @@ function dailyTimer() {
 
 function play() {
     if (gamemode === 0) {
-        document.getElementById('disable').style.pointerEvents = "none";
-        document.getElementById('endless').style.pointerEvents = "none";
-        document.getElementById('daily5').style.pointerEvents = "none";
-        i = Math.floor(Math.random() * wordlist.length)
-        setWord(i);
-        setClue(i);
-        document.getElementById(`clue`).className = "default"        
-        let clue = document.getElementById('clue').innerHTML;
-        timeleft = 20;
-        let realAnswer = wordlist[i].answer;
-        theword = realAnswer;
-        if (score === 0) {
-            let downloadTimer = setInterval(function(a) {
-                if (timeleft <= 0) {
-                    clearInterval(downloadTimer);
-                    alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
-                    reset();
-                } else {
-                    document.getElementById("time").innerHTML = timeleft;
-                }
-                timeleft -= 1;
-            }, 1000);
-        };
-        document.addEventListener('keydown', function moveInput(event, i) {
-            if (event.key == 'Enter') {
-                let yourAnswer = guess();
-                if (yourAnswer.toUpperCase() === realAnswer) {
-                    score++;
-                    for (let i = 0; i < 7; i++) {
-                        document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
-                    };
-                    document.getElementById('clue').innerHTML = "&check; Correct"
-                    document.getElementById(`clue`).className = "pop correct"        
-                    setTimeout(() => {
-                        for (let i = 0; i < 7; i++) {
-                            document.getElementById(`a${i+1}`).value = "";
-                            document.getElementById(`a${i+1}`).className = "inputbox";
+        if (score < 4) {
+            document.getElementById('a1').style.backgroundColor = "#875fd8";
+            document.getElementById('a2').style.backgroundColor = "#875fd8";
+            document.getElementById('a3').style.backgroundColor = "#875fd8";
+            document.getElementById('a4').style.backgroundColor = "#875fd8";
+            document.getElementById('a5').readOnly = true;
+            document.getElementById('a6').readOnly = true;
+            document.getElementById('a7').readOnly = true;
+            document.getElementById('disable').style.pointerEvents = "none";
+            document.getElementById('endless').style.pointerEvents = "none";
+            document.getElementById('daily5').style.pointerEvents = "none";
+            i = Math.floor(Math.random() * fourLetterWords.length)
+            setWord(i);
+            setClue(i);
+            document.getElementById(`clue`).className = "default"        
+            let clue = document.getElementById('clue').innerHTML;
+            timeleft = 20;
+            realAnswer = fourLetterWords[i].answer;
+            theword = realAnswer;
+            if (score === 0) {
+                let downloadTimer = setInterval(function(a) {
+                    if (timeleft <= 0) {
+                        clearInterval(downloadTimer);
+                        alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
+                        reset();
+                    } else {
+                        document.getElementById("time").innerHTML = timeleft;
+                    }
+                    timeleft -= 1;
+                }, 1000);
+            };
+            document.addEventListener('keydown', function moveInput(event, i) {
+                if (event.key == 'Enter') {
+                    let yourAnswer = guess();
+                    if (yourAnswer.toUpperCase() === realAnswer) {
+                        score++;
+                        for (let i = 0; i < 4; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
                         };
-                    }, "500");
-                    document.getElementById("score").innerHTML = score;
-                    this.removeEventListener('keydown', moveInput);
+                        document.getElementById('clue').innerHTML = "&check; Correct"
+                        document.getElementById(`clue`).className = "pop correct"        
+                        setTimeout(() => {
+                            for (let i = 0; i < 4; i++) {
+                                document.getElementById(`a${i+1}`).value = "";
+                                document.getElementById(`a${i+1}`).className = "inputbox";
+                            };
+                        }, "500");
+                        document.getElementById("score").innerHTML = score;
+                        this.removeEventListener('keydown', moveInput);
+                        setTimeout(() => {
+                            play(Math.floor(Math.random() * fourLetterWords.length));
+                        }, "500");
+                    } else {
+                        document.getElementById('clue').innerHTML = "&cross; Incorrect"
+                        for (let i = 0; i < 4; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox shake";    
+                        };
+                        setTimeout(() => {
+                            document.getElementById('clue').innerHTML = clue;
+                            document.getElementById(`clue`).className = "default" 
+                            for (let i = 0; i < 4; i++) {
+                                document.getElementById(`a${i+1}`).className = "inputbox";    
+                            };       
+                        }, "500");
+                        document.getElementById(`clue`).className = "pop incorrect"
+                    }
+                } else if (event.key == 'Backspace') {
+                    document.activeElement.innerHTML = ""
                     setTimeout(() => {
-                        play(Math.floor(Math.random() * wordlist.length));
-                    }, "500");
+                        document.activeElement.previousElementSibling.focus();    
+                    }, "10");
                 } else {
-                    document.getElementById('clue').innerHTML = "&cross; Incorrect"
-                    for (let i = 0; i < 7; i++) {
-                        document.getElementById(`a${i+1}`).className = "inputbox shake";    
-                    };
-                    setTimeout(() => {
-                        document.getElementById('clue').innerHTML = clue;
-                        document.getElementById(`clue`).className = "default" 
-                        for (let i = 0; i < 7; i++) {
-                            document.getElementById(`a${i+1}`).className = "inputbox";    
-                        };       
-                    }, "500");
-                    document.getElementById(`clue`).className = "pop incorrect"
+                    document.activeElement.value = ""; 
+                    setTimeout(() => { 
+                        document.activeElement.innerHTML = event.key;
+                    }, "10");
+                    if (document.activeElement.id === "a4") {
+                        return;
+                    } else {
+                        setTimeout(() => {
+                            document.activeElement.nextElementSibling.focus();     
+                        }, "12");
+                    }
                 }
-            } else if (event.key == 'Backspace') {
-                document.activeElement.innerHTML = ""
-                setTimeout(() => {
-                    document.activeElement.previousElementSibling.focus();    
-                }, "10");
-            } else {
-                document.activeElement.value = ""; 
-                setTimeout(() => { 
-                    document.activeElement.innerHTML = event.key;
-                }, "10");
-                setTimeout(() => {
-                    document.activeElement.nextElementSibling.focus();     
-                }, "12");
-            }
-        });
-        document.getElementById("a1").focus();
+            });
+            document.getElementById("a1").focus();
+        }
+        if (score >= 4 && score < 20) {
+            document.getElementById('a5').style.backgroundColor = "#875fd8";
+            document.getElementById('a6').style.backgroundColor = "#875fd8";
+            document.getElementById('a7').style.backgroundColor = "#875fd8";
+            document.getElementById('a5').readOnly = false;
+            document.getElementById('a6').readOnly = false;
+            document.getElementById('a7').readOnly = false;
+            document.getElementById('disable').style.pointerEvents = "none";
+            document.getElementById('endless').style.pointerEvents = "none";
+            document.getElementById('daily5').style.pointerEvents = "none";
+            i = Math.floor(Math.random() * wordlist.length)
+            setWord(i);
+            setClue(i);
+            document.getElementById(`clue`).className = "default"        
+            let clue = document.getElementById('clue').innerHTML;
+            timeleft = 5;
+            let realAnswer = wordlist[i].answer;
+            theword = realAnswer
+            if (score === 0) {
+                let downloadTimer = setInterval(function(a) {
+                    if (timeleft <= 0) {
+                        clearInterval(downloadTimer);
+                        alert(`Game over. Your final score was ${score}. The correct answer was ${theword}.`);
+                        reset();
+                    } else {
+                        document.getElementById("time").innerHTML = timeleft;
+                    }
+                    timeleft -= 1;
+                }, 1000);
+            };
+            document.addEventListener('keydown', function moveInput(event, i) {
+                if (event.key == 'Enter') {
+                    let yourAnswer = guess();
+                    if (yourAnswer.toUpperCase() === realAnswer) {
+                        score++;
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
+                        };
+                        document.getElementById('clue').innerHTML = "&check; Correct"
+                        document.getElementById(`clue`).className = "pop correct"        
+                        setTimeout(() => {
+                            for (let i = 0; i < 7; i++) {
+                                document.getElementById(`a${i+1}`).value = "";
+                                document.getElementById(`a${i+1}`).className = "inputbox";
+                            };
+                        }, "500");
+                        document.getElementById("score").innerHTML = score;
+                        this.removeEventListener('keydown', moveInput);
+                        setTimeout(() => {
+                            play(Math.floor(Math.random() * wordlist.length));
+                        }, "500");
+                    } else {
+                        document.getElementById('clue').innerHTML = "&cross; Incorrect"
+                        for (let i = 0; i < 7; i++) {
+                            document.getElementById(`a${i+1}`).className = "inputbox shake";    
+                        };
+                        setTimeout(() => {
+                            document.getElementById('clue').innerHTML = clue;
+                            document.getElementById(`clue`).className = "default" 
+                            for (let i = 0; i < 7; i++) {
+                                document.getElementById(`a${i+1}`).className = "inputbox";    
+                            };       
+                        }, "500");
+                        document.getElementById(`clue`).className = "pop incorrect"
+                    }
+                } else if (event.key == 'Backspace') {
+                    document.activeElement.innerHTML = ""
+                    setTimeout(() => {
+                        document.activeElement.previousElementSibling.focus();    
+                    }, "10");
+                } else {
+                    document.activeElement.value = ""; 
+                    setTimeout(() => { 
+                        document.activeElement.innerHTML = event.key;
+                    }, "10");
+                    setTimeout(() => {
+                        document.activeElement.nextElementSibling.focus();     
+                    }, "12");
+                }
+            });
+            document.getElementById("a1").focus();
+        }
     } else if (gamemode === 1) {
         document.getElementById('disable').style.pointerEvents = "none";
         document.getElementById('endless').style.pointerEvents = "none";
@@ -356,7 +491,6 @@ function play() {
         document.getElementById(`clue`).className = "default"        
         let clue = document.getElementById('clue').innerHTML;
         let realAnswer = daily[dailyScore].answer;
-        theword = realAnswer;
         if (score === 0) {
             dailyTimer();
         }

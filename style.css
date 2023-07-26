@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: linear-gradient(#110e1c, #121212);
+    background-color: #121212;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -154,7 +154,7 @@ p, h2, h3 {
 }
 
 #a1, #a2, #a3, #a4, #a5, #a6, #a7 {
-    background-color: #875fd8;
+    background-color: #121212;
     margin-bottom: 1vh;
 } 
 
