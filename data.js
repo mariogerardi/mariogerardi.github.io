@@ -6,6 +6,7 @@ let score = 0;
 let gamemode = 2;
 let theword = "";
 let dailyScore = 0;
+let wordLength = 4;
 
 const fourLetterWords = [
     {
@@ -507,34 +508,35 @@ const sevenLetterWords = [
 
 const daily = [
     {
-        answer: "FALLACY", 
-        clue1: "WALLABY",
-        clue2: "a mistaken belief",
-        color: [n, g, g, g, g, n, g]
+        answer: "FISH", 
+        clue1: "SWIM",
+        clue2: "salmon or cod, for example",
+        color: [p, n, p, n]
     },
     {
-        answer: "UNDERGO", 
-        clue1: "FOUNDER",
-        clue2: "experience; be subjected to",
-        color: [n, p, p, p, p, p, p]
+        answer: "SQUID", 
+        clue1: "QUIET",
+        clue2: "ink producer",
+        color: [p, p, p, n, n]
     },
     {
-        answer: "PANCAKE", 
-        clue1: "PEACOCK",
-        clue2: "often stacked breakfast staple",
-        color: [g, p, p, g, n, n, p]
+        answer: "SHRIMP", 
+        clue1: "PERISH",
+        clue2: "cocktail crustacean",
+        color: [p, n, g, g, p, p]
     },
     {
-        answer: "MELANIN", 
-        clue1: "KERATIN",
-        clue2: "skin pigment",
-        color: [n, g, n, g, n, g, g]
+        answer: "OYSTER", 
+        clue1: "STEREO",
+        clue2: "pearl-making shellfish",
+        color: [p, p, n, p, g, p]
     },
     {
-        answer: "TRAFFIC", 
-        clue1: "AFFLICT",
-        clue2: "many commuters, collectively",
-        color: [p, p, p, n, p, p, p]
+        answer: "LOBSTER", 
+        clue1: "BOTTLER",
+        clue2: "popular Maine export",
+        color: [p, g, p, n, p, g, g],
+        theme: "Sea Creatures"
     }
 ]
 
@@ -563,7 +565,16 @@ function setWord (i) {
 }
 
 function setWordDaily (i) {
-    for (let j = 0; j < 7; j++) {
+    if (i === 1) {
+        wordLength = 5;
+    }
+    if (i === 2 || i === 3) {
+        wordLength = 6;
+    }
+    if (i === 4) {
+        wordLength = 7;
+    }
+    for (let j = 0; j < wordLength; j++) {
         document.getElementById(`l${j+1}`).innerHTML = daily[i].clue1.charAt(j);
         document.getElementById(`q${j+1}`).style.backgroundColor = daily[i].color[j];
     }
@@ -958,7 +969,7 @@ function play() {
         document.getElementById('endless').style.pointerEvents = "none";
         document.getElementById('daily5').style.pointerEvents = "none";
         if (dailyScore === 5) {
-            alert(`Congratulations! Your total time to complete today's Daily 5 was ${timeleft-1} seconds! Today's words were ${daily[0].answer}, ${daily[1].answer}, ${daily[2].answer}, ${daily[3].answer}, and ${daily[4].answer}. Thanks for playing!`);
+            alert(`Congratulations! Your total time to complete today's Daily 5 was ${timeleft-1} seconds! Today's words were ${daily[0].answer}, ${daily[1].answer}, ${daily[2].answer}, ${daily[3].answer}, and ${daily[4].answer} - today's theme was ${daily[4].theme}. Thanks for playing!`);
             reset();
         };
         setWordDaily(dailyScore);
@@ -972,18 +983,21 @@ function play() {
         if (score === 0) {
             dailyTimer();
         }
+        for (let i = 0; i < realAnswer.length; i++) {
+            document.getElementById(`a${i+1}`).style.backgroundColor = "#875fd8";
+        };      
         document.addEventListener('keydown', function moveInput(event, i) {
             if (event.key == 'Enter') {
                 let yourAnswer = guess();
                 if (yourAnswer.toUpperCase() === realAnswer) {
                     score++;
-                    for (let i = 0; i < 7; i++) {
+                    for (let i = 0; i < realAnswer.length; i++) {
                         document.getElementById(`a${i+1}`).className = "inputbox bounce correctblocks";    
                     };
                     document.getElementById('clue').innerHTML = "&check; Correct"
                     document.getElementById(`clue`).className = "pop correct"        
                     setTimeout(() => {
-                        for (let i = 0; i < 7; i++) {
+                        for (let i = 0; i < realAnswer.length; i++) {
                             document.getElementById(`a${i+1}`).value = "";
                             document.getElementById(`a${i+1}`).className = "inputbox";
                         };
@@ -996,13 +1010,13 @@ function play() {
                     }, "500");
                 } else {
                     document.getElementById('clue').innerHTML = "&cross; Incorrect"
-                    for (let i = 0; i < 7; i++) {
+                    for (let i = 0; i < realAnswer.length; i++) {
                         document.getElementById(`a${i+1}`).className = "inputbox shake";    
                     };
                     setTimeout(() => {
                         document.getElementById('clue').innerHTML = clue;
                         document.getElementById(`clue`).className = "default" 
-                        for (let i = 0; i < 7; i++) {
+                        for (let i = 0; i < realAnswer.length; i++) {
                             document.getElementById(`a${i+1}`).className = "inputbox";    
                         };       
                     }, "500");
@@ -1019,7 +1033,11 @@ function play() {
                     document.activeElement.innerHTML = event.key;
                 }, "10");
                 setTimeout(() => {
-                    document.activeElement.nextElementSibling.focus();     
+                    if (document.activeElement.id === `a${realAnswer.length}`) {
+                        return;
+                    } else {
+                    document.activeElement.nextElementSibling.focus();   
+                    }  
                 }, "12");
             }
         });
