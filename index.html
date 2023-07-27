@@ -8,12 +8,13 @@
     <title>DECODE</title>
 </head>
 <body>
-    <div class="inthecard" id="title">
-        <div class="inputbox" id="q"><p>&#9733;&nbsp;&nbsp;&nbsp;D E C O D E&nbsp;&nbsp;&nbsp;&#9733;</p></div>
-    </div>
-    <div class="buttons">
-        <button class="gamemode" id="endless" onclick="endless()">TIMED</button>
-        <button class="gamemode" id="daily5" onclick="daily5()">DAILY 5</button>
+    <div class="inthecardtitle" id="title">
+        <div class="titleletter" id="q">
+            <h1 class="big">DECODE</h1>
+        </div>
+        <div class="titleletter" id="r">
+            <h6>by Mario Gerardi</h6>
+        </div>
     </div>
     <hr width="95%">
     <div class="card">
@@ -30,7 +31,7 @@
             <h1 id="clue"></h1>
         </div>
     </div>
-    <div class="inthecard">
+    <div class="inthecard answerletters">
         <input class="inputbox" style="text-transform:uppercase" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" id="a1">
         <input class="inputbox" style="text-transform:uppercase" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" id="a2">
         <input class="inputbox" style="text-transform:uppercase" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" id="a3">
@@ -45,14 +46,19 @@
         <div id="timerscore">Score:<span id="score">0</span></div>
         <button class="beginreset" onclick="reset()">Reset</button>
     </div>
+    <div class="buttons">
+        <button class="gamemode" id="endless" onclick="endless()">TIMED</button>
+        <button class="gamemode" id="daily5" onclick="daily5()">DAILY 5</button>
+        <button class="gamemode" id="zen" onclick="zen()">ZEN</button>
+    </div>
     <div class="instructions">
         <hr>
         <br>
-        <h2>How to Play:</h2>
+        <h3>How to Play:</h3>
         <br>
         <p class="rules">
-            For each puzzle, you are given <span style="font-weight: bolder;">two</span> clues - a seven-letter word, and a hint for the answer. 
-            In the seven-letter word, a <span style="color: #14A44D; font-weight: bolder;">green</span> square indicates that the letter is in the answer, in <span style="font-style: italic;">the same spot</span>. 
+            For each puzzle, you are given <span style="font-weight: bolder;">two</span> clues - a word, and a hint for the answer. 
+            In the word, a <span style="color: #14A44D; font-weight: bolder;">green</span> square indicates that the letter is in the answer, in <span style="font-style: italic;">the same spot</span>. 
             A <span style="color: #3B71CA; font-weight: bolder;">blue</span> square indicates that the letter is also in the answer, but in <span style="font-style: italic;">a different spot</span>. 
             A <span style="color: gray; font-weight: bolder;">gray</span> square indicates that the letter is not in the answer.
             <br><br>
@@ -84,13 +90,14 @@
                 <div class="inputbox" id="e" style="background-color: #14A44D;"><p>E</p></div>
             </div>
         </div>
-        <br><br><br>
-        <h3>Endless:</h2>
+        <br>
+        <h3>TIMED Mode:</h2>
         <p class="rules"><br>
-        Ensure that ENDLESS is selected at the top of the page.
+        Ensure that TIMED is selected at the top of the page.
         Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle and start the timer.
         You are allotted 20 seconds to solve each puzzle.
-        With each correct answer, the timer resets.
+        The puzzles will become more difficult as you continue to solve them.
+        With each correct answer, the timer resets to 20 seconds.
         Once the timer runs out, the game is over.
         </p>
         <br><br>
@@ -99,14 +106,14 @@
         Ensure that DAILY 5 is selected at the top of the page.
         Press <span style="color: #875fd8; font-weight: bolder;">Begin</span> to generate the first puzzle.
         You are allotted as much time as necessary to solve each puzzle.
-        With each correct answer, a new puzzle is generated - you may not move onto the next puzzle until you have completed the previous one.
+        With each correct answer, a new, harder puzzle is generated - you may not move onto the next puzzle until you have completed the previous one.
         After you've completed the Daily 5, the timer stops, and your score is displayed.
         <br><br>
         <hr>
         <br>
         <p class="rules">
-            <span style="font-weight: bolder;">Decrypt</span> is word game inspired by Josh Wardle's <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> that 
-            incorporates clues reminscent of crossword puzzles, and a timer that keep players on their toes and rewards them for correct guesses.
+            <span style="font-weight: bolder;">Decode</span> is word game inspired by Josh Wardle's <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> that 
+            incorporates clues reminscent of crossword puzzles.
         </p>
         <br>
         <br>
