@@ -147,6 +147,78 @@ const fourLetterWords = [
         clue2: "common fairytale antagonist",
         color: [p, p, p, p]
     },
+    {
+        answer: "MILK", 
+        clue1: "KILN",
+        clue2: "half of half-and-half",
+        color: [p, g, g, n]
+    },
+    {
+        answer: "VEST", 
+        clue1: "SAVE",
+        clue2: "part of a three-piece suit",
+        color: [p, n, p, p]
+    },
+    {
+        answer: "WAIT", 
+        clue1: "TAIL",
+        clue2: "delay",
+        color: [p, g, g, n]
+    },
+    {
+        answer: "WINK", 
+        clue1: "KNIT",
+        clue2: "flirtatious gesture, or signal of a kind",
+        color: [p, p, p, n]
+    },
+    {
+        answer: "PEEL", 
+        clue1: "PLEA",
+        clue2: "result of a sunburn... or, a banana's skin",
+        color: [g, p, g, n]
+    },
+    {
+        answer: "ZEST", 
+        clue1: "SIZE",
+        clue2: "citrus shaving... or, a certain enthusiasm",
+        color: [p, n, p, p]
+    },
+    {
+        answer: "KICK", 
+        clue1: "CAKE",
+        clue2: "punt... or, a bit of spice, figuratively",
+        color: [p, n, p, n]
+    },
+    {
+        answer: "DRUM", 
+        clue1: "CURD",
+        clue2: "snare or bongo, for example",
+        color: [n, p, p, p]
+    },
+    {
+        answer: "SHUN", 
+        clue1: "BUSH",
+        clue2: "ostracize; cold-shoulder",
+        color: [n, p, p, p]
+    },
+    {
+        answer: "AREA", 
+        clue1: "AURA",
+        clue2: "vicinity; turf",
+        color: [g, n, p, g]
+    },
+    {
+        answer: "TRAP", 
+        clue1: "PART",
+        clue2: "ambush... or, a hip-hop subgenre",
+        color: [p, p, p, p]
+    },
+    {
+        answer: "BEST", 
+        clue1: "STAB",
+        clue2: "top; overcome; outdo",
+        color: [p, p, n, p]
+    },
 ]
 
 const fiveLetterWords = [
@@ -239,6 +311,78 @@ const fiveLetterWords = [
         clue1: "BLOOM",
         clue2: "middle state; gray area",
         color: [p, p, p, n, p]
+    },
+    {
+        answer: "PANIC", 
+        clue1: "BASIC",
+        clue2: "freak out; hysteria",
+        color: [n, g, n, g, g]
+    },
+    {
+        answer: "WHISK", 
+        clue1: "FRISK",
+        clue2: "egg beating implement",
+        color: [n, n, g, g, g]
+    },
+    {
+        answer: "EXTRA", 
+        clue1: "LATEX",
+        clue2: "additional; not included; more than enough",
+        color: [n, p, g, p, p]
+    },
+    {
+        answer: "KIOSK", 
+        clue1: "SKULK",
+        clue2: "newsstand; tourist information spot",
+        color: [p, p, n, n, g]
+    },
+    {
+        answer: "VOWEL", 
+        clue1: "LOVER",
+        clue2: "y, sometimes",
+        color: [p, g, p, g, n]
+    },
+    {
+        answer: "SCORE", 
+        clue1: "ROCKY",
+        clue2: "obtain points... or, accompanying music for a film",
+        color: [p, p, p, n, n]
+    },
+    {
+        answer: "DOUSE", 
+        clue1: "PAUSE",
+        clue2: "soak; drench",
+        color: [n, n, g, g, g]
+    },
+    {
+        answer: "ASKEW", 
+        clue1: "SKATE",
+        clue2: "a bit off; out of alignment",
+        color: [p, p, p, n, p]
+    },
+    {
+        answer: "WHACK", 
+        clue1: "SHARK",
+        clue2: "hard hit or slap; wallop",
+        color: [n, g, g, n, g]
+    },
+    {
+        answer: "ATLAS", 
+        clue1: "SALTY",
+        clue2: "a book of maps",
+        color: [p, p, g, p, n]
+    },
+    {
+        answer: "QUEUE", 
+        clue1: "QUEST",
+        clue2: "waiting line",
+        color: [g, g, g, n, n]
+    },
+    {
+        answer: "MURAL", 
+        clue1: "LUNAR",
+        clue2: "expansive work of art; wall painting",
+        color: [p, g, n, g, p]
     },
 ]
 
@@ -344,6 +488,42 @@ const sixLetterWords = [
         clue1: "BRONZE",
         clue2: "popular setting for an outdoor wedding",
         color: [p, n, p, n, p, p]
+    },
+    {
+        answer: "PAPAYA", 
+        clue1: "BANANA",
+        clue2: "tropical, melon-like fruit",
+        color: [n, g, n, g, n, g]
+    },
+    {
+        answer: "BISQUE", 
+        clue1: "QUICHE",
+        clue2: "thick, creamy soup",
+        color: [p, p, p, n, n, g]
+    },
+    {
+        answer: "DROWSY", 
+        clue1: "BROWSE",
+        clue2: "in need of a nap; sleepy",
+        color: [n, g, g, g, g, n]
+    },
+    {
+        answer: "VACUUM", 
+        clue1: "AUTUMN",
+        clue2: "cleaning device... or, an empty space",
+        color: [p, p, n, g, p, n]
+    },
+    {
+        answer: "MALICE", 
+        clue1: "FEMALE",
+        clue2: "evil intentions; spitefulness",
+        color: [n, n, p, p, p, g]
+    },
+    {
+        answer: "CHEESE", 
+        clue1: "SEETHE",
+        clue2: "cottage or blue, for example",
+        color: [p, p, g, n, p, g]
     },
 ]
 
@@ -503,6 +683,24 @@ const sevenLetterWords = [
         clue1: "WALLABY",
         clue2: "a mistaken belief",
         color: [n, g, g, g, g, n, g]
+    },
+    {
+        answer: "MUSICAL", 
+        clue1: "PURITAN",
+        clue2: "'Cats' or 'Hamilton,' for example",
+        color: [n, g, n, g, n, g, n]
+    },
+    {
+        answer: "PARADOX", 
+        clue1: "PHOENIX",
+        clue2: "logical conundrum; catch-22",
+        color: [g, n, p, n, n, n, n]
+    },
+    {
+        answer: "TWINKLE", 
+        clue1: "TRICKLE",
+        clue2: "glimmer",
+        color: [g, n, g, n, g, g, g]
     },
 ]
 
@@ -1023,21 +1221,21 @@ function play() {
                     document.getElementById(`clue`).className = "pop incorrect"
                 }
             } else if (event.key == 'Backspace') {
-                document.activeElement.innerHTML = ""
+                document.activeElement.innerHTML = "";
                 setTimeout(() => {
-                    document.activeElement.previousElementSibling.focus();    
-                }, "10");
+                    document.activeElement.previousElementSibling.focus();
+                }, "5");
             } else {
                 document.activeElement.value = ""; 
                 setTimeout(() => { 
                     document.activeElement.innerHTML = event.key;
-                }, "10");
+                }, "5");
                 setTimeout(() => {
                     if (document.activeElement.id === `a${realAnswer.length}`) {
                         return;
                     } else {
                     document.activeElement.nextElementSibling.focus();   
-                    }  
+                    }
                 }, "12");
             }
         });
